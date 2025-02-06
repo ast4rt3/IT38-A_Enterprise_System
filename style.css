@@ -9,8 +9,8 @@
     height: 30vh;
     background: #dd6a4d63;
     margin-left: 5vh;
-    align-self: first baseline;
-    margin-top: 20vh;
+    margin-right: 5vh;
+    margin-top: 5vh;
     align-content: center;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
@@ -66,8 +66,10 @@ nav {
     opacity: 0.8;
     background-image: url(https://i.pinimg.com/564x/09/ec/88/09ec88d796bef29ce419c27b6854f71d.jpg);
     background-size: cover;
+   
     background-position: center;
     transition: opacity 0.5s ease-in-out;
+  
 }
 
 nav :hover {
@@ -86,6 +88,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 section h1 {
@@ -118,6 +121,7 @@ section:target h1 {
 
 #first {
     background: var(--primary-color);
+   
 }
 
 #second {
