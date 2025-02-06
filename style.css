@@ -4,16 +4,23 @@
     box-sizing: border-box;
 }
 
-#square{
+#square {
     width: 30vh;
     height: 30vh;
     background: #dd6a4d63;
     margin-left: 5vh;
-    align-self:first baseline;
+    align-self: first baseline;
     margin-top: 20vh;
     align-content: center;
     text-align: center;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    transition: all 0.2s ease-in-out; /* Smooth animation */
+}
+
+#square:hover {
+    transform: translateY(5px); /* Moves down slightly */
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 12px, rgba(0, 0, 0, 0.1) 0px 4px 6px; /* Softer shadow */
+    border: none; /* Ensures no border */
 }
 
 
