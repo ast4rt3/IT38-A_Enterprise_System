@@ -11,12 +11,6 @@
 }
 
 
-.HomeImage{
-    
-    background-image: url("https: //www.pngplay.com/wp-content/uploads/7/Home-Logo-Transparent-Free-PNG.png");
-    border: 8px solid rgb(0, 255, 42);
-}
-
 :root {
     --primary-color: #000000;
     --secondary-color: #ffffff;
@@ -27,8 +21,10 @@
 
 .container {
     background: #191919;
-    min-height: 100vh;
+    width: 0px;
+    height: 0px;
     font-family: Montserrat, sans-serif;
+    overflow: hidden;
 }
 
 
@@ -41,10 +37,6 @@ nav a {
     font-family: Arial, sans-serif;
 
     
-}
-body {
-    height: 200vh; /* Ensures scrolling */
-    margin: 0;
 }
 
 nav {
@@ -63,18 +55,6 @@ nav {
     background-size: cover;
     background-position: center;
     transition: opacity 0.5s ease-in-out;
-}
-
-.scrolled {
-    opacity: 0; /* Hide nav when scrolled */
-    pointer-events: none; /* Prevent interaction */
-}
-
-@media (hover: none) {
-    :root:has(:not(:first-child)) nav {
-        opacity: 0;
-        pointer-events: none;
-    }
 }
 
 nav :hover {
