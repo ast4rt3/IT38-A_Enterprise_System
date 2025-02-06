@@ -11,9 +11,15 @@
 }
 
 
+.HomeImage{
+    
+    background-image: url("https: //images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA0L3RwNDk5LWF1LTAwMy1pY29uLTAxLmpwZw.jpg");
+    border: 8px solid rgb(0, 255, 42);
+}
+
 :root {
-    --primary-color: #D96AA7;
-    --secondary-color: #422C73;
+    --primary-color: #000000;
+    --secondary-color: #503194;
     --complimentary-color: #88BFB5;
     --contrast-color: #F2E527;
     --light-color: #D2A9D9;
