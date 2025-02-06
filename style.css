@@ -34,7 +34,7 @@
 
 nav a {
     font-size: 30px;
-    color: #000000;
+    color: #ffffff;
     text-decoration: none;
     padding: 20px;
     text-align: center;
@@ -42,20 +42,39 @@ nav a {
 
     
 }
-
+body {
+    height: 200vh; /* Ensures scrolling */
+    margin: 0;
+}
 
 nav {
     position: fixed;
+    top: 0;
     left: 0;
+    width: 13%; /* Ensures full width */
     z-index: 50;
     display: flex;
     justify-content: center;
     flex-direction: column;
     height: 100vh;
     background: var(--secondary-color);
+    opacity: 0.8;
+    background-image: url(https://i.pinimg.com/564x/09/ec/88/09ec88d796bef29ce419c27b6854f71d.jpg);
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.5s ease-in-out;
+}
 
+.scrolled {
+    opacity: 0; /* Hide nav when scrolled */
+    pointer-events: none; /* Prevent interaction */
+}
 
-
+@media (hover: none) {
+    :root:has(:not(:first-child)) nav {
+        opacity: 0;
+        pointer-events: none;
+    }
 }
 
 nav :hover {
