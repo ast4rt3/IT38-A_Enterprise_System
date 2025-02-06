@@ -4,6 +4,13 @@
     box-sizing: border-box;
 }
 
+#square{
+    width: 100px;
+        height: 100px;
+        background: #dd6b4d;
+}
+
+
 :root {
     --primary-color: #D96AA7;
     --secondary-color: #422C73;
