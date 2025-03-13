@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#square {
+    width: 30vh;
+    height: 30vh;
+    background: #dd6a4d63;
+    margin-left: 5vh;
+    margin-right: 5vh;
+    margin-top: 5vh;
+    align-content: center;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    transition: all 0.2s ease-in-out; /* Smooth animation */
+}
+
+#square:hover {
+    transform: translateY(5px); /* Moves down slightly */
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 6px 12px, rgba(0, 0, 0, 0.1) 0px 4px 6px; /* Softer shadow */
+    border: none; /* Ensures no border */
+}
+
+
+:root {
+    --primary-color: #000000;
+    --secondary-color: #ffffff;
+    --complimentary-color: #88BFB5;
+    --contrast-color: #F2E527;
+    --light-color: #D2A9D9;
+}
+
+.container {
+    background: #191919;
+    width: 0px;
+    height: 0px;
+    font-family: Montserrat, sans-serif;
+    overflow: hidden;
+}
+
+
+nav a {
+    font-size: 30px;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+
+    
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 13%; /* Ensures full width */
+    z-index: 50;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100vh;
+    background: var(--secondary-color);
+    opacity: 0.8;
+    background-image: url(https://i.pinimg.com/564x/09/ec/88/09ec88d796bef29ce419c27b6854f71d.jpg);
+    background-size: cover;
+   
+    background-position: center;
+    transition: opacity 0.5s ease-in-out;
+  
+}
+
+nav :hover {
+    background-color: gray;
+    transition: background-color 0.5s ease-in-out 0.1s; 
+}
+
+
+section {
+
+    top: 0;
+    height: 100vh;
+    width: 0;
+    opacity: 0;
+    transition: all ease-in .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+section h1 {
+    color: #fff;
+    font-size: 50px;
+    text-transform: uppercase;
+    opacity: 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 30vh;
+    margin: 20px;
+    color: rgb(255, 255, 255);
+}
+
+/* Styles applied on trigger */
+section:target {
+    opacity: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    
+}
+
+section:target h1 {
+    opacity: 0;
+    animation: 2s fadeIn forwards .5s;
+}
+
+#first {
+    background: var(--primary-color);
+   
+}
+
+#second {
+    background: var(--complimentary-color);
+}
+
+#third {
+    background: var(--contrast-color);
+}
+
+#fourth {
+    background: var(--light-color);
+}
+
+@keyframes fadeIn {
+    100% {
+        opacity: 1
+    }
+}
