@@ -51,10 +51,9 @@
 	<center>
 	<br><h1>Welcome to our website</h1>
 	<h3>You are logged in</h3>
-	<form action='includes/logout.inc.php' method='post'>
-		<button type='submit' class='button button3' name='logout-submit'>Log Out</button>
-
-		
+	 <form action="includes/logout.inc.php" method="post">
+            <button type="submit" class="button" name="logout-submit">Log Out</button>
+        </form>
     </form>
 </center>
 </body>
