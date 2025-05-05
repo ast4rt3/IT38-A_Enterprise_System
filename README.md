@@ -21,9 +21,9 @@ Follow the steps below to set up the project on your local machine.
 First, clone the repository to your local machine:
 
 ```bash
-git clonehttps://github.com/ast4rt3/IT38-A_Enterprise_System/
+git clone https://github.com/ast4rt3/IT38-A_Enterprise_System/
 cd IT38-A_Enterprise_System
-
+```
 
 composer install
 
