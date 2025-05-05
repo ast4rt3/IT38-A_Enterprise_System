@@ -2,7 +2,7 @@
 # SmartWaste
 ## *Smart Waste Pick-Up*
  ***Optimizing Waste Collection with Real-Time Tracking & Smart Routing!*** 
-IT38_A Enterprise System 
+### IT38_A Enterprise System 
 
 ## Requirements
 
