@@ -1,5 +1,7 @@
 
 # SmartWaste
+## *Smart Waste Pick-Up*
+### *Optimizing Waste Collection with Real-Time Tracking & Smart Routing!*
 
 
 ## Requirements
@@ -58,11 +60,27 @@ This will start the application at
 http://localhost:8000/login
 ```
 
-##Troubleshooting
+## Troubleshooting
 
-Missing PHP Extensions
+### 1.Missing PHP Extensions
 If you see errors related to missing extensions, ensure that your PHP installation has the necessary extensions, such as pdo and pdo_sqlite.
 
-Database File Not Found
+### 2.Database File Not Found
 If you're using SQLite, ensure that the database/database.sqlite file exists. You can manually create an empty SQLite file if necessary:
+```
+touch database/database.sqlite
+```
+### 3.Node Modules Not Found
+If npm throws an error about missing node modules, try running:
+```
+npm install
+```
+### 4.Application Key Missing
+If you see an error related to the application key, ensure you’ve run:
+```
+php artisan key:generate
+```
+
+
+
 
