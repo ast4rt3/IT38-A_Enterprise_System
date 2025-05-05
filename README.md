@@ -1,7 +1,7 @@
 
 # SmartWaste
 ## *Smart Waste Pick-Up*
-### *Optimizing Waste Collection with Real-Time Tracking & Smart Routing!*
+ ***Optimizing Waste Collection with Real-Time Tracking & Smart Routing!*** 
 
 
 ## Requirements
