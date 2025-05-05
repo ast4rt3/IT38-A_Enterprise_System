@@ -24,6 +24,9 @@ First, clone the repository to your local machine:
 git clone https://github.com/ast4rt3/IT38-A_Enterprise_System/
 cd IT38-A_Enterprise_System
 ```
+### Step 2: Install PHP Dependencies
 
+Install the PHP dependencies required for the Laravel application:
+```
 composer install
-
+```
