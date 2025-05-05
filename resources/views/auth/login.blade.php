@@ -91,12 +91,39 @@
       transition: transform 0.2s;
     }
     .right {
-      flex: 1;
-      background-color: #a5d6a7;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  flex: 1;
+  background-color: #a5d6a7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+}
+.right-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.right-content h1 {
+  font-size: 2.5rem;
+  color: #1b5e20;
+  margin: 0;
+}
+
+.right-content h2 {
+  font-size: 1rem;
+  color: #2e7d32;
+  margin: 0;
+  font-style: italic;
+}
+
+.right-content img {
+  width: 200px;
+  border-radius: 50%;
+  margin-top: 1rem;
+}
     .right img {
       width: 200px;
       border-radius: 50%;
@@ -150,7 +177,7 @@
         <p class="signup">No account? <a href="{{ route('register') }}">Sign up</a></p>
         <div class="socials">
           <img src="https://mailmeteor.com/logos/assets/PNG/Gmail_Logo_512px.png" alt="Gmail">
-          <img src="https://static.vecteezy.com/system/resources/previews/018/930/476/original/facebook-logo-facebook-icon-transparent-free-png.png" alt="Facebook">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Facebook_Logo_2023.png/1200px-Facebook_Logo_2023.png" alt="Facebook">
           <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Other">
         </div>
       </div>
@@ -159,9 +186,14 @@
         <a href="#">Terms & Conditions</a> | <a href="#">Support</a> | <a href="#">Customer Care</a>
       </div>
     </div>
+
     <div class="right">
-      <img src="https://static.vecteezy.com/system/resources/previews/025/952/160/non_2x/map-icon-design-free-vector.jpg" alt="Eco Logo">
-    </div>
+  <div class="right-content">
+    <h1>Smart Waste Pick-Up</h1>
+    <h2>Optimizing Waste Collection with Real-Time Tracking & Smart Routing!</h2>
+    <img src="https://static.vecteezy.com/system/resources/previews/025/952/160/non_2x/map-icon-design-free-vector.jpg" alt="Eco Logo">
+  </div>
+</div>
   </div>
 </body>
 </html>
