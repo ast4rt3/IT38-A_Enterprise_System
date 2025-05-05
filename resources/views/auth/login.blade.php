@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -134,7 +136,7 @@
       font-size: 0.9rem;
     }
     .signup a {
-      color: #1b5e20;
+        color: blue;
       text-decoration: none;
     }
     /* Footer Styles */
@@ -154,6 +156,40 @@
     .footer a:hover {
       text-decoration: underline;
     }
+    .popup {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 1rem;
+  border-radius: 5px;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.popup-content {
+  position: relative;
+  text-align: left;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #721c24;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
   </style>
 </head>
 <body>
@@ -162,6 +198,17 @@
       <div class="form-box">
         <h1>Welcome back!</h1>
         <h2>Login</h2>
+        @if ($errors->any())
+  <div id="errorPopup" class="popup">
+    <div class="popup-content">
+      <span class="close-btn" onclick="document.getElementById('errorPopup').style.display='none'">&times;</span>
+      @foreach ($errors->all() as $error)
+        <p>{{ $error }}</p>
+      @endforeach
+    </div>
+  </div>
+@endif
+
         <form method="POST" action="{{ route('login') }}">
           @csrf
           <div class="input-group">
