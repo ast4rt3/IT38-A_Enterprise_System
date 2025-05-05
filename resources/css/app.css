@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom eco-green palette */
+body {
+    @apply bg-green-50 text-green-900;
+}
+
+header {
+    @apply bg-green-200 text-green-800 shadow;
+}
+
+nav {
+    @apply bg-green-300 text-green-900;
+}
