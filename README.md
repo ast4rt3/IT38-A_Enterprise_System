@@ -1,6 +1,6 @@
 
 # SmartWaste
-## *Smart Waste Pick-Up*
+<span style="color: red;"> ## *Smart Waste Pick-Up* </span>
  ***Optimizing Waste Collection with Real-Time Tracking & Smart Routing!*** 
 ### IT38_A Enterprise System 
 
