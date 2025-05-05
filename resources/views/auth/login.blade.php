@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
-    /* Same CSS as earlier answer, pasted directly here for simplicity */
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -26,6 +25,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      position: relative;
     }
     .form-box {
       width: 80%;
@@ -110,13 +110,31 @@
       color: #1b5e20;
       text-decoration: none;
     }
+    /* Footer Styles */
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #388e3c;
+    }
+    .footer a {
+      color: #1b5e20;
+      text-decoration: none;
+      margin: 0 10px;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="left">
       <div class="form-box">
-        <h1>Login</h1>
+        <h1>Welcome back!</h1>
+        <h2>Login</h2>
         <form method="POST" action="{{ route('login') }}">
           @csrf
           <div class="input-group">
@@ -136,9 +154,13 @@
           <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Other">
         </div>
       </div>
+      <!-- Footer Section -->
+      <div class="footer">
+        <a href="#">Terms & Conditions</a> | <a href="#">Support</a> | <a href="#">Customer Care</a>
+      </div>
     </div>
     <div class="right">
-      <img src="https://i.pinimg.com/736x/aa/ec/16/aaec16b6c7fcd29d1d42d950265c5447.jpg" alt="Eco Logo">
+      <img src="https://static.vecteezy.com/system/resources/previews/025/952/160/non_2x/map-icon-design-free-vector.jpg" alt="Eco Logo">
     </div>
   </div>
 </body>
