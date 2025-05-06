@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
+    /* Same CSS as earlier answer, pasted directly here for simplicity */
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
@@ -27,7 +28,6 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      position: relative;
     }
     .form-box {
       width: 80%;
@@ -227,10 +227,6 @@
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Facebook_Logo_2023.png/1200px-Facebook_Logo_2023.png" alt="Facebook">
           <img src="https://cdn-icons-png.flaticon.com/512/281/281764.png" alt="Other">
         </div>
-      </div>
-      <!-- Footer Section -->
-      <div class="footer">
-        <a href="#">Terms & Conditions</a> | <a href="#">Support</a> | <a href="#">Customer Care</a>
       </div>
     </div>
 
