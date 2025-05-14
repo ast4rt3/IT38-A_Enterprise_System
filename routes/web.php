@@ -3,6 +3,11 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\FeatureController;
+use App\Http\Controllers\LiveMapController;
+use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ContactController;
 
 Route::post('/logout', function () {
     Auth::logout();
@@ -19,20 +24,11 @@ Route::get('/login', function () {
     return view('auth.login'); // Route to Login page
 });
 
-// Dashboard (Home)
-Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-
-// Features
-Route::get('/features', [FeatureController::class, 'index'])->name('features');
-
-// Live Map
-Route::get('/live-map', [LiveMapController::class, 'index'])->name('live-map');
-
-// Reports
-Route::get('/reports', [ReportController::class, 'index'])->name('reports');
-
-// Contact
-Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('app/Http/Controllers/FeatureController.php', [FeatureController::class, 'index'])->name('features');
+Route::get('app/Http/Controllers//live-map', [LiveMapController::class, 'index'])->name('live-map');
+Route::get('app/Http/Controllers//reports', [ReportController::class, 'index'])->name('reports');
+Route::get('app/Http/Controllers//contact', [ContactController::class, 'index'])->name('contact');
 
 // Route for the dashboard page, protected by auth and verified middleware
 Route::get('/dashboard', function () {
