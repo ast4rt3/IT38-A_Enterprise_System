@@ -19,6 +19,21 @@ Route::get('/login', function () {
     return view('auth.login'); // Route to Login page
 });
 
+// Dashboard (Home)
+Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
+// Features
+Route::get('/features', [FeatureController::class, 'index'])->name('features');
+
+// Live Map
+Route::get('/live-map', [LiveMapController::class, 'index'])->name('live-map');
+
+// Reports
+Route::get('/reports', [ReportController::class, 'index'])->name('reports');
+
+// Contact
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
+
 // Route for the dashboard page, protected by auth and verified middleware
 Route::get('/dashboard', function () {
     return view('dashboard');

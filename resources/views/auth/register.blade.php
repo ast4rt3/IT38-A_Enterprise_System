@@ -16,12 +16,6 @@
             <x-input-error :messages="$errors->get('last_name')" class="mt-2" />
         </div>
 
-        <!-- Middle Initial -->
-        <div class="mt-4">
-            <x-input-label for="middle_initial" :value="__('Middle Initial')" />
-            <x-text-input id="middle_initial" class="block mt-1 w-full" type="text" name="middle_initial" :value="old('middle_initial')" maxlength="1" autocomplete="additional-name" />
-            <x-input-error :messages="$errors->get('middle_initial')" class="mt-2" />
-        </div>
 
         <!-- Suffix (Optional) -->
         <div class="mt-4">
@@ -109,7 +103,7 @@
 
 
 
-        <div class="flex items-center justify-end mt-4">
+Get-ExecutionPolicy
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
                 {{ __('Already registered?') }}
             </a>
