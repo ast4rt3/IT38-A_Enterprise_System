@@ -6,15 +6,15 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {{-- Contact Card --}}
-        @foreach ($contact as $contact)
+        @foreach ($contact as $contacts)
         <div class="bg-white rounded-2xl shadow-md p-6">
             <div class="mb-4">
-                <h2 class="text-xl font-semibold text-gray-800">{{ $contact['name'] }}</h2>
-                <p class="text-gray-500">{{ $contact['role'] }}</p>
+                <h2 class="text-xl font-semibold text-gray-800">{{ $contacts['name'] }}</h2>
+                <p class="text-gray-500">{{ $contacts['role'] }}</p>
             </div>
             <div class="text-sm text-gray-700">
-                <p><strong>Email:</strong> <a href="mailto:{{ $contact['email'] }}" class="text-green-600 hover:underline">{{ $contact['email'] }}</a></p>
-                <p><strong>Phone:</strong> <a href="tel:{{ $contact['phone'] }}" class="text-green-600 hover:underline">{{ $contact['phone'] }}</a></p>
+                <p><strong>Email:</strong> <a href="mailto:{{ $contacts['email'] }}" class="text-green-600 hover:underline">{{ $contacts['email'] }}</a></p>
+                <p><strong>Phone:</strong> <a href="tel:{{ $contacts['phone'] }}" class="text-green-600 hover:underline">{{ $contacts['phone'] }}</a></p>
             </div>
         </div>
         @endforeach
