@@ -9,34 +9,37 @@ use App\Http\Controllers\LiveMapController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\ContactController;
 
+// Logout route
 Route::post('/logout', function () {
     Auth::logout();
-    return redirect('/login'); // Correct redirect path for logout
+    return redirect('/login');
 })->name('logout');
 
-// Ensure you only have one route for '/' (root)
+// Redirect root to login page
 Route::get('/', function () {
-    return redirect('/login'); // Redirect root to login page
+    return redirect('/login');
 });
 
-// Route for the login page
+// Login page route
 Route::get('/login', function () {
-    return view('auth.login'); // Route to Login page
-});
+    return view('auth.login');
+})->name('login');
 
+// Home page route
 Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('app/Http/Controllers/FeatureController.php', [FeatureController::class, 'index'])->name('features');
-Route::get('app/Http/Controllers/live-map.php', [LiveMapController::class, 'index'])->name('live-map');
-Route::get('app/Http/Controllers//reports', [ReportController::class, 'index'])->name('reports');
-Route::get('app/Http/Controllers//contact', [ContactController::class, 'index'])->name('contact');
 
+// Corrected feature routes - use URL slugs, not file paths
+Route::get('/features', [FeatureController::class, 'index'])->name('features');
+Route::get('/live-map', [LiveMapController::class, 'index'])->name('live-map');
+Route::get('/reports', [ReportController::class, 'index'])->name('reports');
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
-
-// Route for the dashboard page, protected by auth and verified middleware
+// Dashboard protected by auth and verified middleware
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// Authenticated user profile routes
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
