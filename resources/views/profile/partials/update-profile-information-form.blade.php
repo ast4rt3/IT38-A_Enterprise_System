@@ -16,17 +16,62 @@
     <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
+            {{-- First Name --}}
+<div>
+    <x-input-label for="first_name" value="First Name" />
+    <x-text-input id="first_name" name="first_name" type="text" class="mt-1 block w-full"
+        value="{{ old('first_name', auth()->user()->first_name) }}" required autofocus />
+    <x-input-error class="mt-2" :messages="$errors->get('first_name')" />
+</div>
 
+{{-- Last Name --}}
+<div>
+    <x-input-label for="last_name" value="Last Name" />
+    <x-text-input id="last_name" name="last_name" type="text" class="mt-1 block w-full"
+        value="{{ old('last_name', auth()->user()->last_name) }}" required />
+    <x-input-error class="mt-2" :messages="$errors->get('last_name')" />
+</div>
+
+                {{-- Phone --}}
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
-            <x-input-error class="mt-2" :messages="$errors->get('name')" />
+            <x-input-label for="phone" value="Phone" />
+            <x-text-input id="phone" name="phone" type="text" class="mt-1 block w-full"
+                value="{{ old('phone', auth()->user()->phone) }}" required />
+            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
         </div>
 
+        {{-- License --}}
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
-            <x-input-error class="mt-2" :messages="$errors->get('email')" />
+            <x-input-label for="license" value="Driver's License" />
+            <x-text-input id="license" name="license" type="text" class="mt-1 block w-full"
+                value="{{ old('license', auth()->user()->license) }}" required />
+            <x-input-error class="mt-2" :messages="$errors->get('license')" />
+        </div>
+
+        {{-- Location Fields --}}
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div>
+                <x-input-label for="city" value="City" />
+                <x-text-input id="city" name="city" type="text" class="mt-1 block w-full"
+                    value="{{ old('city', auth()->user()->city) }}" required />
+                <x-input-error class="mt-2" :messages="$errors->get('city')" />
+            </div>
+
+            <div>
+                <x-input-label for="province" value="Province" />
+                <x-text-input id="province" name="province" type="text" class="mt-1 block w-full"
+                    value="{{ old('province', auth()->user()->province) }}" required />
+                <x-input-error class="mt-2" :messages="$errors->get('province')" />
+            </div>
+
+            <div>
+                <x-input-label for="region" value="Region" />
+                <x-text-input id="region" name="region" type="text" class="mt-1 block w-full"
+                    value="{{ old('region', auth()->user()->region) }}" required />
+                <x-input-error class="mt-2" :messages="$errors->get('region')" />
+            </div>
+        </div>
+
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
