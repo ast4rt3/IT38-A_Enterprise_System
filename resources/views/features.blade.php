@@ -1,61 +1,81 @@
 <x-app-layout>
 
-        <!-- Header with White Background -->
-        <div class="flex items-center space-x-2 bg-white py-4">
-            <h2 class="font-semibold text-xl text-green-800 leading-tight">
-                {{ __('Features') }}
-            </h2>
+  <!-- Header -->
+  <div class="flex items-center justify-center bg-white py-6 border-b border-green-300 shadow-sm">
+    <h2 class="text-3xl font-extrabold text-green-900 tracking-wider uppercase drop-shadow-md">
+      {{ __('Features') }}
+    </h2>
+  </div>
+
+  <div class="min-h-screen bg-gradient-to-b from-green-100 to-green-50 py-20 px-6 sm:px-12 lg:px-20">
+    <div class="max-w-7xl mx-auto">
+
+      <h1 class="text-center text-5xl font-extrabold text-green-900 mb-12 tracking-tight drop-shadow-lg">
+        Smart Waste Management System
+      </h1>
+      <p class="max-w-3xl mx-auto text-center text-xl text-green-800 mb-16 leading-relaxed font-light">
+        Revolutionize waste collection with real-time bin monitoring, optimized routes, and actionable insights for cleaner communities.
+      </p>
+
+      <!-- Card grid -->
+      <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
+
+        <!-- Card 1 -->
+        <div class="bg-gradient-to-tr from-green-200 via-green-300 to-green-400 rounded-3xl shadow-lg p-8 flex flex-col items-center text-center transition-transform hover:scale-105">
+          <div class="bg-white rounded-full p-6 mb-6 shadow-inner">
+            <svg class="h-16 w-16 text-green-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 0a2 2 0 100-4 2 2 0 000 4zm-6-8h.01M3 6h18M4 10h16M4 14h16" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-extrabold text-green-900 mb-2 drop-shadow-sm">Real-time Bin Monitoring</h3>
+          <p class="text-green-900 font-medium leading-relaxed">
+            Sensors provide live fill-level data so pickups happen right on time—no overflow, no missed bins.
+          </p>
         </div>
 
-
-    <div class="py-12 bg-green-50 min-h-screen">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Landing Page Section -->
-            <div class="bg-white p-8 rounded-lg shadow-lg">
-
-                <!-- Title and Subtitle -->
-                <div class="text-center mb-1">
-                     <h1 class="text-lg text-bold text-[#895353]">{{ __('Smart Waste Pick-Up') }}</h1>
-                     <p class="text-3xl font-semibold text-[#895353]">{{ __('Track. Optimize. Clean.') }}</p>
-                    </div>
-
-
-                <!-- Description -->
-                <div class="text-center mb-12">
-                    <p class="text-lg text-[#895353]">
-                        Welcome to the Smart Waste Management System — a digital solution that revolutionizes how waste is tracked, collected, and managed. 
-                        Our platform leverages real-time data, optimized routing, and smart notifications to make waste collection faster, cleaner, and more efficient.
-                    </p>
-                </div>
-
-                <!-- How it Works Section -->
-                <div class="text-center mb-12">
-                    <h3 class="text-2xl font-bold text-[#895353] mb-4">{{ __('How it works') }}</h3>
-                    <div class="flex justify-center space-x-8">
-                        <!-- Step 1: Admin reviews -->
-                        <div class="text-center">
-                            <img src="https://via.placeholder.com/80" alt="Step 1" class="mx-auto mb-4">
-                            <p class="text-lg text-[#895353] font-semibold">Admin reviews bin levels and sets routes.</p>
-                        </div>
-                        <!-- Step 2: Reports -->
-                        <div class="text-center">
-                            <img src="https://via.placeholder.com/80" alt="Step 2" class="mx-auto mb-4">
-                            <p class="text-lg text-[#895353] font-semibold">Reports and analytics are generated for admins.</p>
-                        </div>
-                        <!-- Step 3: Waste bins -->
-                        <div class="text-center">
-                            <img src="https://via.placeholder.com/80" alt="Step 3" class="mx-auto mb-4">
-                            <p class="text-lg text-[#895353] font-semibold">Waste bins send status data to the system.</p>
-                        </div>
-                        <!-- Step 4: Drivers -->
-                        <div class="text-center">
-                            <img src="https://via.placeholder.com/80" alt="Step 4" class="mx-auto mb-4">
-                            <p class="text-lg text-[#895353] font-semibold">Drivers follow optimized paths for pickup.</p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <!-- Card 2 -->
+        <div class="bg-gradient-to-tr from-green-300 via-green-400 to-green-500 rounded-3xl shadow-lg p-8 flex flex-col items-center text-center transition-transform hover:scale-105">
+          <div class="bg-white rounded-full p-6 mb-6 shadow-inner">
+            <svg class="h-16 w-16 text-green-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-6a2 2 0 012-2h4a2 2 0 012 2v6m-6 0h6" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 11h16" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-extrabold text-green-900 mb-2 drop-shadow-sm">Smart Route Optimization</h3>
+          <p class="text-green-900 font-medium leading-relaxed">
+            Data-driven routes save fuel and time while guaranteeing timely pickups every day.
+          </p>
         </div>
+
+        <!-- Card 3 -->
+        <div class="bg-gradient-to-tr from-green-200 via-green-300 to-green-400 rounded-3xl shadow-lg p-8 flex flex-col items-center text-center transition-transform hover:scale-105">
+          <div class="bg-white rounded-full p-6 mb-6 shadow-inner">
+            <svg class="h-16 w-16 text-green-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 7l-7 7-5-5" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-extrabold text-green-900 mb-2 drop-shadow-sm">Detailed Reporting & Analytics</h3>
+          <p class="text-green-900 font-medium leading-relaxed">
+            Insightful reports to track pickup trends and improve waste management decisions.
+          </p>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="bg-gradient-to-tr from-green-300 via-green-400 to-green-500 rounded-3xl shadow-lg p-8 flex flex-col items-center text-center transition-transform hover:scale-105">
+          <div class="bg-white rounded-full p-6 mb-6 shadow-inner">
+            <svg class="h-16 w-16 text-green-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 17l-2-2m0 0l2-2m-2 2h6m4 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-2xl font-extrabold text-green-900 mb-2 drop-shadow-sm">Driver-Friendly Interface</h3>
+          <p class="text-green-900 font-medium leading-relaxed">
+            Dynamic, easy-to-use routes help drivers stay efficient and accurate on every pickup.
+          </p>
+        </div>
+
+      </div>
     </div>
+  </div>
+
 </x-app-layout>

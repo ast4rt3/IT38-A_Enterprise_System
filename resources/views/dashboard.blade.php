@@ -2,9 +2,9 @@
 
     <!-- Header with White Background -->
     <div class="flex items-center space-x-2 bg-white py-6 px-4">
-        <h1 class="font-extrabold text-4xl text-green-800 leading-tight font-sans">
-            {{ __('SmartWaste Pickup') }}
-        </h1>
+                    <h1 style="font-size: 3rem; font-weight: 800;color:#895353;" class="text-[#895353] mb-2">
+                    {{ __('Smart Waste Pick-Up') }}
+                    </h1>
     </div>
 
     <div class="py-12 bg-green-50 min-h-screen">
@@ -100,5 +100,7 @@
 
             </div>
         </div>
+
     </div>
+    
 </x-app-layout>
