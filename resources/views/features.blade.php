@@ -2,17 +2,13 @@
 
 @section('content')
   <!-- Header -->
-  <div class="flex items-center justify-center bg-white py-6 border-b border-green-300 shadow-sm">
-    <h2 class="text-3xl font-extrabold text-green-900 tracking-wider uppercase drop-shadow-md">
-      {{ __('Features') }}
-    </h2>
-  </div>
 
-  <div class="min-h-screen bg-gradient-to-b from-green-100 to-green-50 py-20 px-6 sm:px-12 lg:px-20">
+
+  <div class="min-h-screen bg-gradient-to-b from-green-100 to-green-50 py-16 px-6 sm:px-12 lg:px-20">
     <div class="max-w-7xl mx-auto">
 
       <h1 class="text-center text-5xl font-extrabold text-green-900 mb-12 tracking-tight drop-shadow-lg">
-        Smart Waste Management System
+       Features
       </h1>
       <p class="max-w-3xl mx-auto text-center text-xl text-green-800 mb-16 leading-relaxed font-light">
         Revolutionize waste collection with real-time bin monitoring, optimized routes, and actionable insights for cleaner communities.

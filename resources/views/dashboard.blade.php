@@ -1,101 +1,76 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- Header with White Background -->
-    <div class="flex items-center space-x-2 bg-white py-1 px-4">
-        <h1 style="font-size: 3rem; font-weight: 800; color:#895353;" class="text-[#895353] mb-2">
-            {{ __('Smart Waste Pick-Up') }}
-        </h1>
-    </div>
+<div class="min-h-screen bg-gradient-to-b from-green-100 to-green-50 py-3 px-6 sm:px-12 lg:px-20">
+  <div class="max-w-7xl mx-auto bg-white rounded-2xl shadow-2xl p-14 font-sans">
 
-    <div class="py-12 bg-green-50 min-h-screen">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <!-- Landing Page Section -->
-            <div class="bg-white p-10 rounded-lg shadow-lg font-sans">
+    <!-- Header -->
+    <header class="text-center mb-9">
+      <h1 class="text-5xl font-extrabold text-[#895353] mb-3 tracking-tight">
+        {{ __('Smart Waste Pick-Up') }}
+      </h1>
+      <p class="text-xl text-[#895353]/90 font-semibold tracking-wide">
+        {{ __('Track. Optimize. Clean.') }}
+      </p>
+    </header>
 
-                <!-- Title and Subtitle -->
-                <div class="text-center mb-6">
-                    <h1 style="font-size: 3rem; font-weight: 800; color:#895353;" class="text-[#895353] mb-2">
-                        {{ __('Smart Waste Pick-Up') }}
-                    </h1>
-                    <h2 style="font-size: 2rem; font-weight: 400; color:#895353;" class="text-[#895353] mb-2">
-                        {{ __('Track. Optimize. Clean.') }}
-                    </h2>
-                </div>
+    <!-- Description -->
+    <p class="text-center text-[#895353]/90 max-w-4xl mx-auto mb-20 leading-relaxed text-lg">
+      Welcome to the Smart Waste Management System — a digital solution that revolutionizes how waste is tracked, collected, and managed.
+      Our platform leverages real-time data, optimized routing, and smart notifications to make waste collection faster, cleaner, and more efficient.
+    </p>
 
-                <!-- Description -->
-                <div class="text-center mb-12" style="color:#895353;">
-                    <p class="text-lg text-[#895353] leading-relaxed">
-                        Welcome to the Smart Waste Management System — a digital solution that revolutionizes how waste is tracked, collected, and managed.
-                        Our platform leverages real-time data, optimized routing, and smart notifications to make waste collection faster, cleaner, and more efficient.
-                    </p>
-                </div>
+    <!-- How It Works Section -->
+    <section>
+      <h2 class="text-center text-3xl font-bold text-[#895353] mb-12">
+        {{ __('How it works') }}
+      </h2>
 
-                <!-- How it Works Section -->
-                <div class="text-center mb-7">
-                    <h3 class="text-2xl font-bold text-[#895353] mb-8">
-                        {{ __('How it works') }}
-                    </h3>
-                    <div class="flex flex-wrap justify-center items-center ">
+      <div class="grid gap-12 sm:grid-cols-2 md:grid-cols-4 justify-between">
 
-                        <!-- Step 1 -->
-                        <div class="w-40 flex flex-col items-center">
+        @php
+          $steps = [
+            [
+              'icon' => '📊',
+              'title' => 'Admin reviews bin levels and sets routes.',
+              'color' => 'bg-rose-100 text-rose-600',
+            ],
+            [
+              'icon' => '📈',
+              'title' => 'Reports and analytics are generated for admins.',
+              'color' => 'bg-green-100 text-green-600',
+            ],
+            [
+              'icon' => '📡',
+              'title' => 'Waste bins send status data to the system.',
+              'color' => 'bg-blue-100 text-blue-600',
+            ],
+            [
+              'icon' => '🚚',
+              'title' => 'Drivers follow optimized paths for pickup.',
+              'color' => 'bg-yellow-100 text-yellow-600',
+            ],
+          ];
+        @endphp
 
-                            <img src="https://static.vecteezy.com/system/resources/previews/029/156/453/non_2x/admin-business-icon-businessman-business-people-male-avatar-profile-pictures-man-in-suit-for-your-web-site-design-logo-app-ui-solid-style-illustration-design-on-white-background-eps-10-vector.jpg" alt="Step 1" class="mb-4 rounded-full" style="width: 50px; height: 50px; object-fit: cover;">
-                            <p class="text-lg font-semibold text-[#895353] max-w-xs">
-                                Admin reviews bin levels and sets routes.
-                            </p>
-                        </div>
-
-                        <!-- Arrow -->
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#895353]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </div>
-
-                        <!-- Step 2 -->
-                        <div class="w-40 flex flex-col items-center">
-                            <img src="https://static.vecteezy.com/system/resources/previews/029/156/453/non_2x/admin-business-icon-businessman-business-people-male-avatar-profile-pictures-man-in-suit-for-your-web-site-design-logo-app-ui-solid-style-illustration-design-on-white-background-eps-10-vector.jpg" alt="Step 1" class="mb-4 rounded-full" style="width: 50px; height: 50px; object-fit: cover;">
-                            <p class="text-lg font-semibold text-[#895353] max-w-xs">
-                                Reports and analytics are generated for admins.
-                            </p>
-                        </div>
-
-                        <!-- Arrow -->
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#895353]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </div>
-
-                        <!-- Step 3 -->
-                        <div class="w-40 flex flex-col items-center">
-                            <img src="https://static.vecteezy.com/system/resources/previews/029/156/453/non_2x/admin-business-icon-businessman-business-people-male-avatar-profile-pictures-man-in-suit-for-your-web-site-design-logo-app-ui-solid-style-illustration-design-on-white-background-eps-10-vector.jpg" alt="Step 1" class="mb-4 rounded-full" style="width: 50px; height: 50px; object-fit: cover;">
-                            <p class="text-lg font-semibold text-[#895353] max-w-xs">
-                                Waste bins send status data to the system.
-                            </p>
-                        </div>
-
-                        <!-- Arrow -->
-                        <div class="flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#895353]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                            </svg>
-                        </div>
-
-                        <!-- Step 4 -->
-                        <div class="w-40 flex flex-col items-center">
-                            <img src="https://static.vecteezy.com/system/resources/previews/029/156/453/non_2x/admin-business-icon-businessman-business-people-male-avatar-profile-pictures-man-in-suit-for-your-web-site-design-logo-app-ui-solid-style-illustration-design-on-white-background-eps-10-vector.jpg" alt="Step 1" class="mb-4 rounded-full" style="width: 50px; height: 50px; object-fit: cover;">
-                            <p class="text-lg font-semibold text-[#895353] max-w-xs">
-                                Drivers follow optimized paths for pickup.
-                            </p>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
+        @foreach ($steps as $step)
+        <div
+          class="flex flex-col items-center bg-white rounded-xl p-8 shadow-md hover:shadow-xl transition-shadow duration-300 cursor-default max-w-xs text-center mx-auto"
+        >
+          <div
+            class="text-5xl mb-6 rounded-full w-20 h-20 flex items-center justify-center {{ $step['color'] }} drop-shadow-lg"
+          >
+            {{ $step['icon'] }}
+          </div>
+          <p class="text-[#895353] font-semibold text-lg leading-snug">
+            {{ $step['title'] }}
+          </p>
         </div>
-    </div>
+        @endforeach
+
+      </div>
+    </section>
+
+  </div>
+</div>
 @endsection
