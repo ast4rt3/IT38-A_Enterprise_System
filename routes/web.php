@@ -26,9 +26,11 @@ Route::get('/login', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('app/Http/Controllers/FeatureController.php', [FeatureController::class, 'index'])->name('features');
-Route::get('app/Http/Controllers//live-map', [LiveMapController::class, 'index'])->name('live-map');
+Route::get('app/Http/Controllers/live-map.php', [LiveMapController::class, 'index'])->name('live-map');
 Route::get('app/Http/Controllers//reports', [ReportController::class, 'index'])->name('reports');
 Route::get('app/Http/Controllers//contact', [ContactController::class, 'index'])->name('contact');
+
+
 
 // Route for the dashboard page, protected by auth and verified middleware
 Route::get('/dashboard', function () {

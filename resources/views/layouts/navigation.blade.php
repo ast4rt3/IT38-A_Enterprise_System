@@ -1,7 +1,7 @@
 <div class="flex h-screen">
   <!-- Sidebar -->
-  <nav class="w-60 bg-green-300 min-h-screen border-r border-green-400 flex flex-col">
-    
+  <nav class="w-30 bg-green-300 min-h-screen border-r border-green-400 flex flex-col">
+
     <!-- Logo -->
     <div class="flex items-center justify-center h-16 bg-green-400 border-b border-green-400">
       <a href="{{ route('dashboard') }}">
@@ -52,9 +52,10 @@
     </div>
   </nav>
   <!-- Main Content Area -->
-  <div class="">
-    {{ $slot }}
-  </div>
+<div class="">
+  @yield('content')
+</div>
+
   
   
 </div>
