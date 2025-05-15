@@ -3,7 +3,7 @@
 @section('content')
 <style>
 main {
-    height: 100vh;  
+    height: 200vh;  
     width: calc(100% - 300px);
     display: flex;
     flex-direction: column;
@@ -12,12 +12,12 @@ main {
 }
 
 #map, #map2 {
-    height: 45vh;
+    height: 300%;
     width: 200%;
     background-color: springgreen;
     border-radius: 8px;
-    margin-left: 270px;
-    margin-top: 30px;
+    margin-left: 20px;
+    margin-top: 80px;
 }
 </style>
 
@@ -48,85 +48,107 @@ main {
     </aside>
 
     {{-- Map Area --}}
-    <main class="flex-1">
-        <div id="map"></div>
-        <div id="map2"></div>
-    </main>
+<main class="flex-1">
+    <div id="map"></div>
+    <div id="map2"></div>
+    <div id="map2-info" class="mt-4 ml-[270px] bg-white rounded shadow p-4 w-[80%]">
+        <h3 class="text-lg font-semibold text-green-700 mb-1">Route Summary</h3>
+        <p id="distance"></p>
+        <p id="duration"></p>
+        <ul id="stops" class="list-disc list-inside text-sm mt-2"></ul>
+    </div>
+</main>
+
+
+
+
 </div>
 @endsection
 
 @push('styles')
-<link
-  rel="stylesheet"
-  href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-  crossorigin=""
-/>
-<link 
-  rel="stylesheet" 
-  href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css"
-/>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
 @endpush
 
 @push('scripts')
-<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    // First map - user location
-    const mapElement = document.getElementById('map');
-    if (!mapElement) {
-        console.error("No #map div found.");
-        return;
-    }
+    navigator.geolocation.getCurrentPosition(function (position) {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
 
-    navigator.geolocation.getCurrentPosition(
-        function (position) {
-            const lat = position.coords.latitude;
-            const lng = position.coords.longitude;
+        // First Map - User's Location
+        const map = L.map('map').setView([lat, lng], 14);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
 
-            const map = L.map('map').setView([lat, lng], 13);
+        L.marker([lat, lng])
+            .addTo(map)
+            .bindPopup('You are here')
+            .openPopup();
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors'
-            }).addTo(map);
+        // Checkpoints (bin locations)
+        const checkpoints = [
+            { name: "Bin 1", coords: [lat + 0.002, lng + 0.001] },
+            { name: "Bin 2", coords: [lat + 0.004, lng + 0.002] },
+            { name: "Bin 3", coords: [lat + 0.006, lng + 0.001] },
+            { name: "Bin 4", coords: [lat + 0.0075, lng - 0.0015] }
+        ];
 
-            L.marker([lat, lng]).addTo(map)
-                .bindPopup('You are here.')
-                .openPopup();
+        checkpoints.forEach(cp => {
+            L.marker(cp.coords).addTo(map).bindPopup(`${cp.name}<br>Status: Pending`);
+        });
 
-            // Second map - routing
-            const map2 = L.map('map2').setView([lat, lng], 13);
+        // Second Map - Routing with Checkpoints
+        const map2 = L.map('map2').setView([lat, lng], 14);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map2);
 
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap contributors'
-            }).addTo(map2);
+        const waypoints = [
+            L.latLng(lat, lng),
+            ...checkpoints.map(cp => L.latLng(cp.coords[0], cp.coords[1]))
+        ];
 
-            // Define two points for routing (you can replace with dynamic points)
-            const start = L.latLng(lat, lng);
-            const end = L.latLng(lat + 0.02, lng + 0.02); // small offset for demo
+        const routingControl = L.Routing.control({
+            waypoints: waypoints,
+            routeWhileDragging: true,
+            showAlternatives: false,
+            lineOptions: {
+                styles: [{ color: 'green', weight: 9 }]
+            },
+            createMarker: function(i, wp, nWps) {
+                return L.marker(wp.latLng).bindPopup(`Stop ${i + 1}`);
+            }
+        }).addTo(map2);
 
-            L.Routing.control({
-                waypoints: [
-                    start,
-                    end
-                ],
-                routeWhileDragging: true,
-                showAlternatives: true,
-                altLineOptions: {
-                    styles: [
-                        {color: 'black', opacity: 0.15, weight: 9},
-                        {color: 'white', opacity: 0.8, weight: 6},
-                        {color: 'blue', opacity: 0.5, weight: 2}
-                    ]
-                }
-            }).addTo(map2);
+routingControl.on('routesfound', function (e) {
+    const route = e.routes[0];
+    const summary = route.summary;
 
-        },
-        function (error) {
-            alert("Geolocation error: " + error.message);
-        }
-    );
+    document.getElementById('distance').textContent =
+        `Total distance: ${(summary.totalDistance / 1000).toFixed(2)} km`;
+
+    document.getElementById('duration').textContent =
+        `Estimated time: ${(summary.totalTime / 60).toFixed(1)} minutes`;
+
+    const stopsList = document.getElementById('stops');
+    stopsList.innerHTML = ''; // Clear previous
+    waypoints.forEach((wp, index) => {
+        const li = document.createElement('li');
+        li.textContent = `Stop ${index + 1}: (${wp.lat.toFixed(4)}, ${wp.lng.toFixed(4)})`;
+        stopsList.appendChild(li);
+    });
+});
+
+
+    }, function (error) {
+        alert("Geolocation error: " + error.message);
+    });
 });
 </script>
 @endpush
