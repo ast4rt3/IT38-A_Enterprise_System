@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register.driver.submit') }}">
         @csrf
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -71,11 +71,11 @@
                 <x-input-error :messages="$errors->get('city')" class="mt-2" />
             </div>
 
+            <!-- Driver License (Always visible for drivers) -->
             <div class="col-span-1 md:col-span-2">
-                <p class="text-sm text-gray-700 mb-2">{{ __('Are you registering as a driver?') }}</p>
-                <a href="{{ route('register.driver') }}" class="inline-block bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded">
-                    {{ __('Register as Driver') }}
-                </a>
+                <x-input-label for="license" :value="__('Driver License Number')" />
+                <x-text-input id="license" class="mt-1 block w-full" type="text" name="license" :value="old('license')" required autocomplete="license" />
+                <x-input-error :messages="$errors->get('license')" class="mt-2" />
             </div>
 
             <!-- Password -->
@@ -100,17 +100,8 @@
             </a>
 
             <x-primary-button class="ml-4">
-                {{ __('Register') }}
+                {{ __('Register as Driver') }}
             </x-primary-button>
         </div>
     </form>
-
-    <script>
-        document.getElementById('is_driver').addEventListener('change', function () {
-            const licenseField = document.getElementById('driver-license');
-            licenseField.classList.toggle('hidden', !this.checked);
-        });
-    </script>
-
-    
 </x-guest-layout>
