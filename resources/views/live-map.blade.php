@@ -19,6 +19,21 @@ main {
     margin-left: 20px;
     margin-top: 80px;
 }
+/* Limit or hide the routing alternatives panel */
+.leaflet-routing-container {
+    max-width: 300px;       /* Restrict its size */
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.9); /* optional */
+    pointer-events: auto;
+    z-index: 1000;
+}
+
+/* OPTIONAL: If you want to remove it completely */
+.leaflet-routing-alternatives-container {
+    
+}
+
 </style>
 
 <div class="flex h-screen w-full bg-green-50">
@@ -116,14 +131,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const routingControl = L.Routing.control({
             waypoints: waypoints,
-            routeWhileDragging: true,
+            routeWhileDragging: false,
             showAlternatives: false,
             lineOptions: {
                 styles: [{ color: 'green', weight: 9 }]
             },
-            createMarker: function(i, wp, nWps) {
-                return L.marker(wp.latLng).bindPopup(`Stop ${i + 1}`);
-            }
+createMarker: function(i, wp, nWps) {
+    const marker = L.marker(wp.latLng).bindPopup(`Stop ${i + 1}`);
+
+    marker.on('click', function () {
+        if (confirm(`Remove Stop ${i + 1}?`)) {
+            // Remove waypoint
+            const newWaypoints = routingControl.getWaypoints().filter((w, index) => index !== i);
+            routingControl.setWaypoints(newWaypoints);
+        }
+    });
+
+    return marker;
+}
+
+
         }).addTo(map2);
 
 routingControl.on('routesfound', function (e) {
