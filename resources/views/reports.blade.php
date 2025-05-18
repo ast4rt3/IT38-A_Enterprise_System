@@ -48,5 +48,38 @@
             </table>
         </div>
     </div>
+
+    {{-- Completed Routes History --}}
+    <div class="bg-white rounded-2xl shadow-md p-6 mt-10">
+        <h2 class="text-2xl font-semibold text-gray-800 mb-4">Completed Routes History</h2>
+        <div class="overflow-x-auto">
+            <table class="w-full text-sm border border-gray-300 rounded-lg overflow-hidden">
+                <thead class="bg-green-50 text-left text-gray-700 uppercase text-xs">
+                    <tr>
+                        <th class="px-4 py-3 border border-gray-200">Date</th>
+                        <th class="px-4 py-3 border border-gray-200">Driver</th>
+                        <th class="px-4 py-3 border border-gray-200">Route</th>
+                        <th class="px-4 py-3 border border-gray-200">Status</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    @forelse ($completedRoutesList as $route)
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-4 py-2 border border-gray-200">{{ $route->updated_at->format('M d, Y') }}</td>
+                        <td class="px-4 py-2 border border-gray-200">{{ $route->driver ? $route->driver->first_name . ' ' . $route->driver->last_name : 'Unassigned' }}</td>
+                        <td class="px-4 py-2 border border-gray-200">{{ $route->start_location }} → {{ $route->end_location }}</td>
+                        <td class="px-4 py-2 border border-gray-200">
+                            <span class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800">Completed</span>
+                        </td>
+                    </tr>
+                    @empty
+                    <tr>
+                        <td colspan="4" class="px-4 py-2 text-center text-gray-400">No completed routes found.</td>
+                    </tr>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>
 @endsection

@@ -22,7 +22,10 @@ class CheckRole
             return redirect()->route('login');
         }
 
-        if (!in_array($request->user()->role, $roles)) {
+        // Get role from session
+        $userRole = $request->session()->get('user_role', $request->user()->role);
+
+        if (!in_array($userRole, $roles)) {
             abort(403, 'Unauthorized action.');
         }
 

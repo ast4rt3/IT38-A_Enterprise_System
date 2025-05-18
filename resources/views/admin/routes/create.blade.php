@@ -29,72 +29,70 @@
 @endpush
 
 @section('content')
-<div class="container mx-auto px-4 py-8">
-    <div class="max-w-4xl mx-auto">
-        <div class="bg-white rounded-lg shadow-md p-6">
-            <h2 class="text-2xl font-bold mb-6">Create New Route</h2>
+<div class="w-full mx-auto px-12 py-8">
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <h2 class="text-2xl font-bold mb-6">Create New Route</h2>
 
-            @if(session('success'))
-                <div class="mb-4 p-4 rounded bg-green-100 text-green-800 border border-green-200">
-                    {{ session('success') }}
-                </div>
-            @endif
-            @if($errors->any())
-                <div class="mb-4 p-4 rounded bg-red-100 text-red-800 border border-red-200">
-                    <ul class="list-disc pl-5">
-                        @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+        @if(session('success'))
+            <div class="mb-4 p-4 rounded bg-green-100 text-green-800 border border-green-200">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if($errors->any())
+            <div class="mb-4 p-4 rounded bg-red-100 text-red-800 border border-red-200">
+                <ul class="list-disc pl-5">
+                    @foreach($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-            <form action="{{ route('admin.routes.store') }}" method="POST" id="routeForm">
-                @csrf
-                
-                <div class="mb-6">
-                    <div class="map-container mb-4">
-                        <div class="map-instructions">
-                            <p class="text-sm text-gray-600">Click on the map to add stops. First is start, last is end. Drag to adjust. Double-click a marker to remove it.</p>
-                        </div>
-                        <div id="map"></div>
+        <form action="{{ route('admin.routes.store') }}" method="POST" id="routeForm">
+            @csrf
+            
+            <div class="mb-6">
+                <div class="map-container mb-4">
+                    <div class="map-instructions">
+                        <p class="text-sm text-gray-600">Click on the map to add stops. First is start, last is end. Drag to adjust. Double-click a marker to remove it.</p>
                     </div>
+                    <div id="map"></div>
                 </div>
+            </div>
 
-                <input type="hidden" name="start_location" id="start_location" required>
-                <input type="hidden" name="end_location" id="end_location" required>
-                <input type="hidden" name="start_lat" id="start_lat" required>
-                <input type="hidden" name="start_lng" id="start_lng" required>
-                <input type="hidden" name="end_lat" id="end_lat" required>
-                <input type="hidden" name="end_lng" id="end_lng" required>
-                <input type="hidden" name="waypoints" id="waypoints_input" required>
+            <input type="hidden" name="start_location" id="start_location" required>
+            <input type="hidden" name="end_location" id="end_location" required>
+            <input type="hidden" name="start_lat" id="start_lat" required>
+            <input type="hidden" name="start_lng" id="start_lng" required>
+            <input type="hidden" name="end_lat" id="end_lat" required>
+            <input type="hidden" name="end_lng" id="end_lng" required>
+            <input type="hidden" name="waypoints" id="waypoints_input" required>
 
-                <div class="mt-4">
-                    <label for="driver_id" class="block text-sm font-medium text-gray-700">Assign to Driver <span class="text-red-500">*</span></label>
-                    @if($drivers->count() > 0)
-                        <select name="driver_id" id="driver_id" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
-                            <option value="">-- Select Driver --</option>
-                            @foreach($drivers as $driver)
-                                <option value="{{ $driver->id }}">{{ $driver->first_name }} {{ $driver->last_name }}</option>
-                            @endforeach
-                        </select>
-                    @else
-                        <div class="text-red-500 text-sm mt-2">No drivers found. Please add drivers first.</div>
-                    @endif
-                </div>
+            <div class="mt-4">
+                <label for="driver_id" class="block text-sm font-medium text-gray-700">Assign to Driver <span class="text-red-500">*</span></label>
+                @if($drivers->count() > 0)
+                    <select name="driver_id" id="driver_id" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-green-500 focus:ring-green-500">
+                        <option value="">-- Select Driver --</option>
+                        @foreach($drivers as $driver)
+                            <option value="{{ $driver->id }}">{{ $driver->first_name }} {{ $driver->last_name }}</option>
+                        @endforeach
+                    </select>
+                @else
+                    <div class="text-red-500 text-sm mt-2">No drivers found. Please add drivers first.</div>
+                @endif
+            </div>
 
-                <div class="mt-6 flex justify-end space-x-4">
-                    <a href="{{ route('admin.dashboard') }}" 
-                        class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
-                        Cancel
-                    </a>
-                    <button type="submit" 
-                        class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                        Create Route
-                    </button>
-                </div>
-            </form>
-        </div>
+            <div class="mt-6 flex justify-end space-x-4">
+                <a href="{{ route('admin.dashboard') }}" 
+                    class="px-4 py-2 border border-gray-300 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-50">
+                    Cancel
+                </a>
+                <button type="submit" 
+                    class="px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                    Create Route
+                </button>
+            </div>
+        </form>
     </div>
 </div>
 

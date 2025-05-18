@@ -12,6 +12,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RouteController;
+use App\Http\Controllers\CheckpointController;
 use App\Http\Middleware\CheckRole;
 
 /*
@@ -83,10 +84,11 @@ Route::middleware('auth')->group(function () {
         Route::post('/routes', [AdminController::class, 'storeRoute'])->name('routes.store');
         Route::get('/routes/{route}/edit', [AdminController::class, 'editRoute'])->name('routes.edit');
         Route::patch('/routes/{route}', [AdminController::class, 'updateRoute'])->name('routes.update');
+        Route::delete('/routes/{route}', [AdminController::class, 'destroyRoute'])->name('routes.destroy');
     });
 
     // Route Assignment Routes
-    Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::middleware([CheckRole::class.':admin'])->group(function () {
         Route::post('/routes/{route}/assign', [RouteController::class, 'assignDriver'])->name('admin.routes.assign');
         Route::post('/routes/{route}/unassign', [RouteController::class, 'unassignDriver'])->name('admin.routes.unassign');
     });
@@ -103,6 +105,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
         Route::get('/routes/{route}', [UserController::class, 'viewRoute'])->name('routes.show');
     });
+
+    // Checkpoint routes
+    Route::get('/checkpoints', [CheckpointController::class, 'index'])->name('checkpoints.index');
+    Route::post('/checkpoints', [CheckpointController::class, 'store'])->name('checkpoints.store');
+    Route::put('/checkpoints/{checkpoint}', [CheckpointController::class, 'update'])->name('checkpoints.update');
+    Route::delete('/checkpoints/{checkpoint}', [CheckpointController::class, 'destroy'])->name('checkpoints.destroy');
 });
 
 // Laravel Breeze/Auth scaffolding

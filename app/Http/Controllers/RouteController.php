@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Route;
-use App\Models\Driver;
 use Illuminate\Http\Request;
 
 class RouteController extends Controller
@@ -11,12 +10,12 @@ class RouteController extends Controller
     public function assignDriver(Request $request, Route $route)
     {
         $request->validate([
-            'driver_id' => 'required|exists:drivers,id'
+            'driver_id' => 'required|exists:users,id,role,driver'
         ]);
 
         $route->update([
             'driver_id' => $request->driver_id,
-            'status' => 'assigned'
+            'status' => 'in_progress'
         ]);
 
         return redirect()->back()->with('success', 'Driver assigned successfully');

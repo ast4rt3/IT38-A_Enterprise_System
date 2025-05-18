@@ -72,4 +72,10 @@ class AdminController extends Controller
         return redirect()->route('admin.dashboard')
             ->with('success', 'Route updated successfully');
     }
+
+    public function destroyRoute(Route $route)
+    {
+        $route->delete();
+        return redirect()->route('admin.dashboard')->with('success', 'Route deleted successfully.');
+    }
 } 

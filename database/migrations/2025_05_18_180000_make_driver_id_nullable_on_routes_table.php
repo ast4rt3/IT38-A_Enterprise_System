@@ -9,14 +9,14 @@ return new class extends Migration
     public function up()
     {
         Schema::table('routes', function (Blueprint $table) {
-            $table->json('waypoints')->nullable();
+            $table->unsignedBigInteger('driver_id')->nullable()->change();
         });
     }
 
     public function down()
     {
         Schema::table('routes', function (Blueprint $table) {
-            $table->dropColumn('waypoints');
+            $table->unsignedBigInteger('driver_id')->nullable(false)->change();
         });
     }
 }; 

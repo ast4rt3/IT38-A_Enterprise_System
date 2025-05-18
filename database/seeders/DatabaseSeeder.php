@@ -13,35 +13,44 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // Create admin user
+        // Create Admin
         User::create([
             'first_name' => 'Admin',
             'last_name' => 'User',
             'email' => 'admin@test.com',
-            'password' => Hash::make('password123'),
+            'password' => Hash::make('password'),
             'role' => 'admin',
+            'phone' => '09123456789',
+            'region' => 'NCR',
+            'province' => 'Metro Manila',
+            'city' => 'Manila'
         ]);
 
-        // Create driver user
+        // Create Regular User
+        User::create([
+            'first_name' => 'Regular',
+            'last_name' => 'User',
+            'email' => 'users@test.com',
+            'password' => Hash::make('password'),
+            'role' => 'user',
+            'phone' => '09123456790',
+            'region' => 'NCR',
+            'province' => 'Metro Manila',
+            'city' => 'Quezon City'
+        ]);
+
+        // Create Driver
         User::create([
             'first_name' => 'Driver',
             'last_name' => 'User',
             'email' => 'driver@test.com',
-            'password' => Hash::make('password123'),
+            'password' => Hash::make('password'),
             'role' => 'driver',
-            'license' => 'DRIVER123',
-            'region' => 'Region 1',
-            'province' => 'Province 1',
-            'city' => 'City 1',
-        ]);
-
-        // Create regular user
-        User::create([
-            'first_name' => 'Regular',
-            'last_name' => 'User',
-            'email' => 'user@test.com',
-            'password' => Hash::make('password123'),
-            'role' => 'user',
+            'phone' => '09123456791',
+            'license' => 'DL-123456',
+            'region' => 'NCR',
+            'province' => 'Metro Manila',
+            'city' => 'Makati'
         ]);
 
         $this->call([

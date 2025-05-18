@@ -21,10 +21,13 @@ class UserController extends Controller
             ->with('driver')
             ->get();
 
+        $checkpoints = auth()->user()->checkpoints()->latest()->get();
+
         return view('user.dashboard', compact(
             'activeRoutes',
             'pendingRoutes',
-            'completedRoutes'
+            'completedRoutes',
+            'checkpoints'
         ));
     }
 

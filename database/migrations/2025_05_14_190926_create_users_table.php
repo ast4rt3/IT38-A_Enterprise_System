@@ -23,6 +23,11 @@ return new class extends Migration {
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            // Add indexes for frequently queried columns
+            $table->index('email');
+            $table->index('role');
+            $table->index(['region', 'province', 'city']);
         });
     }
 

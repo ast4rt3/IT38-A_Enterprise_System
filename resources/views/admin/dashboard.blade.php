@@ -66,7 +66,9 @@
                     </div>
                     <div>
                         <p class="text-sm text-gray-500">Pending Routes</p>
-                        <h4 class="text-2xl font-bold text-gray-800">{{ $routes->where('status', 'pending')->count() }}</h4>
+                        <h4 class="text-2xl font-bold text-gray-800">
+                            {{ $routes->whereIn('status', ['pending', 'in_progress'])->count() }}
+                        </h4>
                     </div>
                 </div>
             </div>
@@ -90,7 +92,7 @@
                 <!-- Map -->
                 <div class="bg-white rounded-xl shadow-sm overflow-hidden">
                     <div class="p-4 border-b border-gray-100 flex justify-between items-center">
-                        <h3 class="text-lg font-semibold text-gray-800">Route Map Control</h3>
+                        <h3 class="text-lg font-semibold text-gray-800">Route Map Testing</h3>
                     </div>
                     <div class="relative h-96 bg-gray-100 rounded-b-xl overflow-hidden">
                         <div id="admin-map" style="height: 24rem; width: 100%; border-radius: 0 0 0.75rem 0.75rem;"></div>
