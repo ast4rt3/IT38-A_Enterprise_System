@@ -104,13 +104,4 @@
             </x-primary-button>
         </div>
     </form>
-
-    <script>
-        document.getElementById('is_driver').addEventListener('change', function () {
-            const licenseField = document.getElementById('driver-license');
-            licenseField.classList.toggle('hidden', !this.checked);
-        });
-    </script>
-
-    
 </x-guest-layout>

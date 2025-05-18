@@ -18,19 +18,19 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-    'first_name',
-    'last_name',
-    'middle_initial',
-    'suffix',
-    'email',
-    'phone',
-    'is_driver',
-    'license',
-    'region',
-    'province',
-    'city',
-    'password',
-];
+        'first_name',
+        'last_name',
+        'middle_initial',
+        'suffix',
+        'email',
+        'phone',
+        'license',
+        'region',
+        'province',
+        'city',
+        'password',
+        'role',
+    ];
 
 
     /**
@@ -54,5 +54,20 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isDriver()
+    {
+        return $this->role === 'driver';
+    }
+
+    public function isUser()
+    {
+        return $this->role === 'user';
     }
 }

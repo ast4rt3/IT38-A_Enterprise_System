@@ -30,35 +30,33 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-    'first_name' => ['required', 'string', 'max:255'],
-    'last_name' => ['required', 'string', 'max:255'],
-    'middle_initial' => ['nullable', 'string', 'max:1'],
-    'suffix' => ['nullable', 'string', 'max:10'],
-    'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-    'phone' => ['required', 'string', 'max:20'],
-    'password' => ['required', 'confirmed', Rules\Password::defaults()],
-    'is_driver' => ['nullable', 'boolean'],
-    'license' => ['required_if:is_driver,1', 'nullable', 'string', 'max:50'],
-    'region' => ['required', 'string'],
-    'province' => ['required', 'string'],
-    'city' => ['required', 'string'],
-]);
-
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
+            'middle_initial' => ['nullable', 'string', 'max:1'],
+            'suffix' => ['nullable', 'string', 'max:10'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'string', 'max:20'],
+            'region' => ['required', 'string', 'max:100'],
+            'province' => ['required', 'string', 'max:100'],
+            'city' => ['required', 'string', 'max:100'],
+            'password' => ['required', 'confirmed', 'min:8'],
+            'license' => ['nullable', 'string', 'max:50'],
+        ]);
 
         $user = User::create([
-    'first_name' => $request->first_name,
-    'last_name' => $request->last_name,
-    'middle_initial' => $request->middle_initial,
-    'suffix' => $request->suffix,
-    'email' => $request->email,
-    'phone' => $request->phone,
-    'is_driver' => $request->boolean('is_driver'),
-    'license' => $request->license,
-    'region' => $request->region,
-    'province' => $request->province,
-    'city' => $request->city,
-    'password' => Hash::make($request->password),
-]);
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'middle_initial' => $request->middle_initial,
+            'suffix' => $request->suffix,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'region' => $request->region,
+            'province' => $request->province,
+            'city' => $request->city,
+            'license' => $request->license,
+            'password' => Hash::make($request->password),
+            'role' => 'user', // or 'driver' if this is a driver registration
+        ]);
 
         event(new Registered($user));
 

@@ -6,47 +6,48 @@ use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class DatabaseSeeder extends Seeder
+class TestUsersSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // Create admin user
+        // Create Admin
         User::create([
             'first_name' => 'Admin',
             'last_name' => 'User',
             'email' => 'admin@test.com',
             'password' => Hash::make('password123'),
             'role' => 'admin',
+            'phone' => '1234567890',
+            'region' => 'Test Region',
+            'province' => 'Test Province',
+            'city' => 'Test City'
         ]);
 
-        // Create driver user
+        // Create Driver
         User::create([
             'first_name' => 'Driver',
             'last_name' => 'User',
             'email' => 'driver@test.com',
             'password' => Hash::make('password123'),
             'role' => 'driver',
-            'license' => 'DRIVER123',
-            'region' => 'Region 1',
-            'province' => 'Province 1',
-            'city' => 'City 1',
+            'phone' => '1234567891',
+            'region' => 'Test Region',
+            'province' => 'Test Province',
+            'city' => 'Test City',
+            'license' => 'DRIVER123'
         ]);
 
-        // Create regular user
+        // Create Regular User
         User::create([
             'first_name' => 'Regular',
             'last_name' => 'User',
             'email' => 'user@test.com',
             'password' => Hash::make('password123'),
             'role' => 'user',
-        ]);
-
-        $this->call([
-            TestUsersSeeder::class,
-            TestRoutesSeeder::class,
+            'phone' => '1234567892',
+            'region' => 'Test Region',
+            'province' => 'Test Province',
+            'city' => 'Test City'
         ]);
     }
-}
+} 

@@ -1,11 +1,11 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash; // <-- Add this import
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class RegisteredUserController extends Controller
 {
@@ -19,6 +19,7 @@ class RegisteredUserController extends Controller
         $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
+            'middle_initial' => 'nullable|string|max:1',
             'suffix' => 'nullable|string|max:10',
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required|string|max:20',
@@ -33,6 +34,7 @@ class RegisteredUserController extends Controller
         $user = User::create([
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
+            'middle_initial' => $request->middle_initial,
             'suffix' => $request->suffix,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -41,7 +43,13 @@ class RegisteredUserController extends Controller
             'city' => $request->city,
             'license' => $request->license,
             'password' => Hash::make($request->password),
-            'role' => 'driver', // if you're using roles
+            'role' => 'driver',
         ]);
+
+        // Log the user in
+        Auth::login($user);
+
+        // Redirect to driver dashboard
+        return redirect()->route('driver.dashboard');
     }
 }

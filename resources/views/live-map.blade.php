@@ -83,6 +83,16 @@ main {
 @push('styles')
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+<style>
+.leaflet-routing-container {
+    max-width: 300px;
+    max-height: 400px;
+    overflow-y: auto;
+    background-color: rgba(255, 255, 255, 0.9);
+    pointer-events: auto;
+    z-index: 1000;
+}
+</style>
 @endpush
 
 @push('scripts')
